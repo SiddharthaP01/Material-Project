@@ -7,9 +7,9 @@ import { MaterialModule } from './Material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AuthGuard } from './auth.guard';
-import { AuthService } from './auth.service';
+import { AuthService } from './Services/auth.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { TokenInterceptorService } from './token-interceptor.service';
+import { TokenInterceptorService } from './Services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { TokenInterceptorService } from './token-interceptor.service';
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [AuthGuard, AuthService, MaterialModule,
   {
