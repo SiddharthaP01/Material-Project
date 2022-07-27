@@ -5,12 +5,7 @@ import {  Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 
 
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
+
 @Component({
   selector: 'app-mat-login',
   templateUrl: './mat-login.component.html',
@@ -21,8 +16,6 @@ export class MatLoginComponent implements OnInit {
     email : new FormControl(''),
     password : new FormControl(''),
   })
-  email = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required]);
 
   matcher = new MyErrorStateMatcher();
   constructor(private auth:AuthService, private route: Router) { }
@@ -42,4 +35,10 @@ export class MatLoginComponent implements OnInit {
     )
   }
 
+}
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
 }
